@@ -223,16 +223,16 @@ def main():
             model_path='models/ssd/frozen_inference_graph_face.pb')
 
     if method not in method_list:
-        print 'Please select the available method from this list: opencv_haar , dlib_hog , dlib_cnn , mtcnn , mobilenet_ssd'
+        print ('Please select the available method from this list: opencv_haar , dlib_hog , dlib_cnn , mtcnn , mobilenet_ssd')
     else:
         data_dict = extract_and_filter_data(splits)
 
         result = evaluate(face_detector, data_dict, iou_threshold)
 
-        print 'Average IOU = %s' % (str(result['average_iou']))
-        print 'mAP = %s' % (str(result['mean_average_precision']))
-        print 'Average inference time = %s' % (
-            str(result['average_inferencing_time']))
+        print ('Average IOU = %s' % (str(result['average_iou'])))
+        print ('mAP = %s' % (str(result['mean_average_precision'])))
+        print ('Average inference time = %s' % (
+            str(result['average_inferencing_time'])))
 
 
 if __name__ == '__main__':

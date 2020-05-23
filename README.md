@@ -36,6 +36,18 @@ In order to use the benchmarking script, you should put the data under folder *d
 
 We perform several filtering on the dataset to avoid invalid image,(see [readme.txt](dataset/wider_face_split/readme.txt) under folder *dataset/wider_face_split*). Based on our assumption that the detected face is not informative if it is too small, we also discard ground truth bounding boxes with height and width less than 15 pixel.
 
+**Download with Google Drive Support**
+
+Before download the dataset, you need to install the gdown
+
+**Train_Set:**
+
+> gdown --id 1BWuqfppAyoAjbMlEWho2QFmJGAayqIKA
+
+**Test_Set**
+
+> gdown --id 1gsJo4MNxFY_gUMvf47kPMRiUeQ9C3NlN
+
 ## Running Benchmark Script
 
 **DISCLAIMER** : In this repository, we didn't take account from which dataset the face detection model is trained (several method obviously performed better because they are trained using WIDER dataset). Our purpose in this repo is solely to show the reader which model is ready to be used and perform better on WIDER dataset. Maybe in the future we will also provide benchmark to the other dataset.
@@ -50,6 +62,14 @@ for the *--method* input you can select string input from the available method b
 3. dlib_cnn
 4. mtcnn
 5. mobilenet_ssd
+
+Example: 
+
+```
+python wider_benchmark.py --method opencv_haar --iou_threshold 0.5
+```
+
+
 
 The *--iou_threshold* input should be float value between 0 and 1. This iou threshold is used to determine whether the prediction box is correctly predicted that there is an object in that location. The prediction boxes will be assigned 'true prediction' if its *intersection over union (IoU)* with the ground truth boxes is bigger than *--iou_threshold* value. To read more about IoU, you can read it in [here](https://www.pyimagesearch.com/2016/11/07/intersection-over-union-iou-for-object-detection/).
 
